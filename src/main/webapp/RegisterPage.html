@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>User Registration</title>
+</head>
+
+<body>
+	<form action="CallingRegisterServlet" method="post">
+		Name<input type="text" name="name"><br>
+		User Name<input type="text" name="username"><br>
+		Password<input type="password" name="password"><br>
+		Email<input type="text" name="email"><br>
+		Phone<input type="text" name="phone"><br>
+		Address<input type="text" name="address"><br>
+		Role<br>
+		Customer<input type="radio" id="customer" name="role" value="Customer">
+		Admin<input type="radio" id="admin" name="role" value="Admin">
+		Restaurant<input type="radio" id="restaurant" name="role" value="Restaurant"><br>
+		<input type="submit" name="Register">
+	</form>
+</body>
+
+</html>
