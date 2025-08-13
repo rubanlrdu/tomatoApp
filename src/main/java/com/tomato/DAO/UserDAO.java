@@ -9,5 +9,5 @@ public interface UserDAO {
 	public void updateUser(UserModel user);
 	public void deleteUser(String userName);
 	public UserModel getUser(String userName);
-	public List<UserModel>selectAllUsers();
+	public List<UserModel>getAllUsers();
 }

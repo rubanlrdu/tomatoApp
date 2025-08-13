@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.Menus,.Restaurants{
+	
+	height:100vh;	
+	justify-content:center;
+	align-items:center;
+	gap:30px;
+	
+}
+.globalOptionButton{
+	text-decoration:none;
+	border-style:solid;
+	border-radius:5px;
+	padding:10px;
+	font-size:3rem;
+}
+

@@ -108,7 +108,7 @@ public class UserImpl implements UserDAO{
 	}
 
 	@Override
-	public List<UserModel> selectAllUsers() {
+	public List<UserModel> getAllUsers() {
 		List<UserModel> list= new ArrayList<UserModel>();
 		Connection con=DataBaseConnection.getConnection();
 		UserModel user;

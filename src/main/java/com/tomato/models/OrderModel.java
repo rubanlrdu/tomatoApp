@@ -72,5 +72,13 @@ public class OrderModel {
 	public void setPaymentMode(String paymentMode) {
 		this.paymentMode = paymentMode;
 	}
+
+
+	@Override
+	public String toString() {
+		return "OrderModel [orderId=" + orderId + ", userId=" + userId + ", restaurantId=" + restaurantId
+				+ ", orderDate=" + orderDate + ", totalAmount=" + totalAmount + ", status=" + status + ", paymentMode="
+				+ paymentMode + "]";
+	}
 	
 }

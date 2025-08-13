@@ -7,8 +7,9 @@ import com.tomato.models.MenuModel;
 public interface MenuDAO {
 
 	void setMenu(MenuModel menu);
-	MenuModel getMenu(MenuModel menu);
+	MenuModel getMenu(int menuId);
 	void updateMenu(MenuModel table);
 	void deleteMenu(MenuModel menu);
+	List<MenuModel> getAllRestaurantMenu(int restaurantId);
 	List<MenuModel> getAllMenu();
 }

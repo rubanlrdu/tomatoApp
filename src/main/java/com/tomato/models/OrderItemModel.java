@@ -52,6 +52,12 @@ public class OrderItemModel {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderItemModel [orderItemId=" + orderItemId + ", orderId=" + orderId + ", menuId=" + menuId
+				+ ", quantity=" + quantity + ", totalPrice=" + totalPrice + "]";
+	}
 	
 	
 }

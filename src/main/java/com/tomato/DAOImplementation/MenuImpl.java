@@ -12,13 +12,15 @@ import com.tomato.models.MenuModel;
 
 public class MenuImpl implements MenuDAO {
 	
-	String INSERT="insert into `menu` (`restaurantId`,`itemName`,`description`,`price`,`ratings`,`isVailable`,`imagePath`) values (?,?,?,?,?,?,?)";
+	String INSERT="insert into `menu` (`restaurantId`,`itemName`,`description`,`price`,`rating`,`isAvailable`,`imagePath`) values (?,?,?,?,?,?,?)";
 	
-	String UPDATE="update `menu` set `itemName`=?,`description`=?,`price`=?,`ratings`=?,`isAvailable`=?,`imagePath`=? where `menuId`=?";
+	String UPDATE="update `menu` set `itemName`=?,`description`=?,`price`=?,`rating`=?,`isAvailable`=?,`imagePath`=? where `menuId`=?";
 	
 	String SELECT="select * from `menu` where `menuId`=?";
 	
 	String SELECTALL="select * from `menu`";
+	
+	String SELECTALLRESTAURANTMENU="select * from `menu` where `restaurantId`=?";
 	
 	String DELETE="delete from `menu` where `menuid`=?";
 	public MenuImpl() {
@@ -33,7 +35,7 @@ public class MenuImpl implements MenuDAO {
 			pstmt.setString(2, menu.getItemName());
 			pstmt.setString(3, menu.getDescription());
 			pstmt.setInt(4, menu.getPrice());
-			pstmt.setInt(5, menu.getRatings());
+			pstmt.setInt(5, menu.getRating());
 			pstmt.setBoolean(6, menu.isAvailable());
 			pstmt.setString(7, menu.getImagePath());
 			
@@ -46,24 +48,23 @@ public class MenuImpl implements MenuDAO {
 	}
 
 	@Override
-	public MenuModel getMenu(MenuModel menu) {
+	public MenuModel getMenu(int menuId) {
 		Connection con=DataBaseConnection.getConnection();
 		MenuModel table=new MenuModel();
 		try {
 			PreparedStatement pstmt = con.prepareStatement(SELECT);
-			pstmt.setInt(1, menu.getMenuId());
+			pstmt.setInt(1, menuId);
 			ResultSet res=pstmt.executeQuery();
 			
 			if(res.next()) {
-				int menuId=res.getInt("menuId");
-				int restauarantId=res.getInt("restauarantId");
+				int restaurantId=res.getInt("restaurantId");
 				String itemName=res.getString("itemName");
 				String description=res.getString("description");
 				int price=res.getInt("price");
-				int ratings=res.getInt("ratings");
+				int rating=res.getInt("rating");
 				Boolean isAvailable=res.getBoolean("isAvailable");
 				String imagePath=res.getString("imagePath");
-				table=new MenuModel(menuId,restauarantId,itemName,description,price,ratings,isAvailable,imagePath);
+				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath);
 			}
 			return table;
 		} catch (SQLException e) {
@@ -81,7 +82,7 @@ public class MenuImpl implements MenuDAO {
 			pstmt.setString(1,table.getItemName());
 			pstmt.setString(2,table.getDescription());
 			pstmt.setInt(3,table.getPrice());
-			pstmt.setInt(4,table.getRatings());
+			pstmt.setInt(4,table.getRating());
 			pstmt.setBoolean(5,table.isAvailable());
 			pstmt.setString(6,table.getImagePath());
 			pstmt.setInt(7,table.getMenuId());
@@ -118,14 +119,44 @@ public class MenuImpl implements MenuDAO {
 			
 			while(res.next()) {
 				int menuId=res.getInt("menuId");
-				int restauarantId=res.getInt("restauarantId");
+				int restaurantId=res.getInt("restaurantId");
 				String itemName=res.getString("itemName");
 				String description=res.getString("description");
 				int price=res.getInt("price");
-				int ratings=res.getInt("ratings");
+				int rating=res.getInt("rating");
 				Boolean isAvailable=res.getBoolean("isAvailable");
 				String imagePath=res.getString("imagePath");
-				table=new MenuModel(menuId,restauarantId,itemName,description,price,ratings,isAvailable,imagePath);
+				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath);
+				list.add(table);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<MenuModel> getAllRestaurantMenu(int restaurantId) {
+		List<MenuModel> list= new ArrayList<MenuModel>();
+		Connection con=DataBaseConnection.getConnection();
+		MenuModel table=new MenuModel();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(SELECTALLRESTAURANTMENU);
+
+			pstmt.setInt(1, restaurantId);
+			ResultSet res=pstmt.executeQuery();
+			
+			while(res.next()) {
+				int menuId=res.getInt("menuId");
+				restaurantId=res.getInt("restaurantId");
+				String itemName=res.getString("itemName");
+				String description=res.getString("description");
+				int price=res.getInt("price");
+				int rating=res.getInt("rating");
+				Boolean isAvailable=res.getBoolean("isAvailable");
+				String imagePath=res.getString("imagePath");
+				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath);
 				list.add(table);
 			}
 			return list;

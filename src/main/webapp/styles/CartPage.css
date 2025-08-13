@@ -1,0 +1,177 @@
+/* General Body and Font Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Main Container for the entire cart */
+.cart-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+}
+
+/* Header section ("Your Shopping Cart") */
+.cart-header {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+}
+
+.cart-header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #1a1a1a;
+}
+
+/* A single item in the cart */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+/* Remove border from the last item */
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+/* Left side of the item card (name and price) */
+.item-details {
+    flex-grow: 1;
+}
+
+.item-name {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.item-price {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Right side of the item card (quantity and subtotal) */
+.item-controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* The box containing -, number, + */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* The quantity number display */
+.quantity-display {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 16px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* The + and - buttons */
+.quantity-btn {
+    background-color: #f0f0f0;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: background-color 0.2s;
+}
+
+.quantity-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* Styling to make buttons round-edged */
+.quantity-control form:first-child .quantity-btn {
+    border-right: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.quantity-control form:last-child .quantity-btn {
+    border-left: 1px solid #ccc;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* The subtotal price for one item line */
+.item-subtotal {
+    font-size: 18px;
+    font-weight: 600;
+    width: 80px; /* Ensures alignment */
+    text-align: right;
+}
+
+/* Summary section at the bottom of the cart */
+.cart-summary {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e0e0e0;
+    text-align: right;
+}
+
+.total-price {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.total-price span {
+    color: #888;
+    font-weight: 500;
+}
+
+.checkout-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Message shown when the cart is empty */
+.empty-cart-message {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-cart-message h2 {
+    color: #555;
+}
+
+.empty-cart-message a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.empty-cart-message a:hover {
+    text-decoration: underline;
+}

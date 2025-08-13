@@ -2,24 +2,37 @@ package com.tomato.models;
 
 public class RestaurantModel {
 	
-	private int restaurantID;
+	private int restaurantId;
 	private String name;
 	private String address;
 	private String phone;
-	private String rating;
+	private int rating;
 	private String cusineType;
 	private boolean isActive;
 	private String eta;
 	private int adminUserId;
 	private String imagePath;
+	private String restaurantUniqueIdentifier;
 
 	public RestaurantModel() {
 	}
 
-	public RestaurantModel(int restaurantID, String name, String address, String phone, String rating,
-			String cusineType, boolean isActive, String eta, int adminUserId, String imagePath) {
+	@Override
+	public String toString() {
+		return "RestaurantModel [restaurantId=" + restaurantId + ", name=" + name + ", address=" + address + ", phone="
+				+ phone + ", rating=" + rating + ", cusineType=" + cusineType + ", isActive=" + isActive + ", eta="
+				+ eta + ", adminUserId=" + adminUserId + ", imagePath=" + imagePath + ", restaurantUniqueIdentifier="
+				+ restaurantUniqueIdentifier + "]";
+	}
+
+
+
+
+
+	public RestaurantModel(int restaurantId, String name, String address, String phone, int rating,
+			String cusineType, boolean isActive, String eta, int adminUserId, String imagePath, String restaurantUniqueIdentifier) {
 		super();
-		this.restaurantID = restaurantID;
+		this.restaurantId = restaurantId;
 		this.name = name;
 		this.address = address;
 		this.phone = phone;
@@ -29,9 +42,10 @@ public class RestaurantModel {
 		this.eta = eta;
 		this.adminUserId = adminUserId;
 		this.imagePath = imagePath;
+		this.restaurantUniqueIdentifier = restaurantUniqueIdentifier;
 	}
 
-	public RestaurantModel(String name, String address, String phone, String rating, String cusineType,
+	public RestaurantModel(String name, String address, String phone, int rating, String cusineType,
 			boolean isActive, String eta, int adminUserId, String imagePath) {
 		super();
 		this.name = name;
@@ -45,8 +59,8 @@ public class RestaurantModel {
 		this.imagePath = imagePath;
 	}
 
-	public RestaurantModel(String name, String address, String phone, String rating, String cusineType,
-			boolean isActive, String eta, String imagePath) {
+	public RestaurantModel(String name, String address, String phone, int rating, String cusineType,
+			boolean isActive, String eta, String imagePath, String restaurantUniqueIdentifier) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -56,14 +70,30 @@ public class RestaurantModel {
 		this.isActive = isActive;
 		this.eta = eta;
 		this.imagePath = imagePath;
+		this.restaurantUniqueIdentifier = restaurantUniqueIdentifier;
 	}
 
-	public int getRestaurantID() {
-		return restaurantID;
+	public RestaurantModel(String name, String address, String phone, int rating, String cusineType, boolean isActive,
+			String eta, int adminUserId, String imagePath, String restaurantUniqueIdentifier) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.rating = rating;
+		this.cusineType = cusineType;
+		this.isActive = isActive;
+		this.eta = eta;
+		this.adminUserId = adminUserId;
+		this.imagePath = imagePath;
+		this.restaurantUniqueIdentifier = restaurantUniqueIdentifier;
 	}
 
-	public void setRestaurantID(int restaurantID) {
-		this.restaurantID = restaurantID;
+	public int getRestaurantId() {
+		return restaurantId;
+	}
+
+	public void setRestaurantId(int restaurantId) {
+		this.restaurantId = restaurantId;
 	}
 
 	public String getName() {
@@ -90,11 +120,11 @@ public class RestaurantModel {
 		this.phone = phone;
 	}
 
-	public String getRating() {
+	public int getRating() {
 		return rating;
 	}
 
-	public void setRating(String rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 
@@ -136,6 +166,13 @@ public class RestaurantModel {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	public String getRestaurantUniqueIdentifier() {
+		return restaurantUniqueIdentifier;
+	}
+
+	public void setRestaurantUniqueIdentifier(String restaurantUniqueIdentifier) {
+		this.restaurantUniqueIdentifier = restaurantUniqueIdentifier;
 	}
 	
 }

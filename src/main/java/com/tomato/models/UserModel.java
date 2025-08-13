@@ -107,6 +107,13 @@ public class UserModel {
 		public void setLastLoginDate(Timestamp lastLoginDate) {
 			this.lastLoginDate = lastLoginDate;
 		}
+
+		@Override
+		public String toString() {
+			return "UserModel [userId=" + userId + ", name=" + name + ", userName=" + userName + ", password="
+					+ password + ", email=" + email + ", phone=" + phone + ", address=" + address + ", role=" + role
+					+ ", createdDate=" + createdDate + ", lastLoginDate=" + lastLoginDate + "]";
+		}
 		
 		
 		

@@ -5,23 +5,27 @@ import java.io.PrintWriter;
 
 import com.tomato.DAOImplementation.UserImpl;
 import com.tomato.models.UserModel;
+import com.tomato.DAO.UserDAO;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
+@WebServlet("/loginServlet")
 public class LoginServlet extends HttpServlet{
 	static int count=3;
 	private static final long serialVersionUID = 1L;
 	@Override
-	protected void service(HttpServletRequest req,HttpServletResponse resp) throws IOException, ServletException
+	protected void doPost(HttpServletRequest req,HttpServletResponse resp) throws IOException, ServletException
 	{
 		String userName=req.getParameter("username");
 		String password=req.getParameter("password");
 		String role=req.getParameter("role");
-		UserImpl userImplementation=new UserImpl();
+		UserDAO userImplementation=new UserImpl();
 		UserModel userTable=new UserModel();
 		userTable.setUserName(userName);
 		userTable.setPassword(password);
@@ -31,14 +35,15 @@ public class LoginServlet extends HttpServlet{
 		
 		if(userName.equals(userTable.getUserName()) && password.equals(userTable.getPassword()))
 		{
-			PrintWriter out= resp.getWriter();
-			out.print("Hello "+userTable.getName() + " !");
+			HttpSession session= req.getSession();
+			session.setAttribute("userName", userTable.getUserName());
+			resp.sendRedirect("Home");
 		}
 		else if(count>0)
 		{
 			PrintWriter out= resp.getWriter();
 			out.print("Remaining"+ count-- +" attempts left.");
-			RequestDispatcher rd=req.getRequestDispatcher("LoginPage.html");
+			RequestDispatcher rd=req.getRequestDispatcher("LoginPage.jsp");
 			rd.include(req, resp);
 		}
 		else

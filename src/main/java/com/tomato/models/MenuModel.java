@@ -7,7 +7,7 @@ public class MenuModel {
 	String itemName;
 	String description;
 	int price;
-	int ratings;
+	int rating;
 	boolean isAvailable;
 	String imagePath;
 	
@@ -15,7 +15,7 @@ public class MenuModel {
 		
 	}
 	
-	public MenuModel(int menuId, int restaurantId, String itemName, String description, int price, int ratings,
+	public MenuModel(int menuId, int restaurantId, String itemName, String description, int price, int rating,
 			boolean isAvailable, String imagePath) {
 		super();
 		this.menuId = menuId;
@@ -23,13 +23,24 @@ public class MenuModel {
 		this.itemName = itemName;
 		this.description = description;
 		this.price = price;
-		this.ratings = ratings;
+		this.rating = rating;
 		this.isAvailable = isAvailable;
 		this.imagePath = imagePath;
 	}
 	
 	
-	
+	public MenuModel(int restaurantId, String itemName, String description, int price, int rating, boolean isAvailable,
+			String imagePath) {
+		super();
+		this.restaurantId = restaurantId;
+		this.itemName = itemName;
+		this.description = description;
+		this.price = price;
+		this.rating = rating;
+		this.isAvailable = isAvailable;
+		this.imagePath = imagePath;
+	}
+
 	public int getMenuId() {
 		return menuId;
 	}
@@ -60,11 +71,11 @@ public class MenuModel {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getRatings() {
-		return ratings;
+	public int getRating() {
+		return rating;
 	}
-	public void setRatings(int ratings) {
-		this.ratings = ratings;
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 	public boolean isAvailable() {
 		return isAvailable;
@@ -78,4 +89,12 @@ public class MenuModel {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
+
+	@Override
+	public String toString() {
+		return "MenuModel [menuId=" + menuId + ", restaurantId=" + restaurantId + ", itemName=" + itemName
+				+ ", description=" + description + ", price=" + price + ", rating=" + rating + ", isAvailable="
+				+ isAvailable + ", imagePath=" + imagePath + "]";
+	}
+	
 }

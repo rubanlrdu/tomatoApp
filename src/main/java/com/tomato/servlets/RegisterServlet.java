@@ -1,6 +1,7 @@
 package com.tomato.servlets;
 import com.tomato.DAOImplementation.UserImpl;
 import com.tomato.models.UserModel;
+import com.tomato.DAO.UserDAO;
 
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,7 +29,7 @@ public class RegisterServlet extends HttpServlet{
 		user.setPhone(phone);
 		user.setAddress(address);
 		user.setRole(role);
-		UserImpl userImplementation=new UserImpl();
+		UserDAO userImplementation=new UserImpl();
 		userImplementation.setUser(user);
 
 	}
