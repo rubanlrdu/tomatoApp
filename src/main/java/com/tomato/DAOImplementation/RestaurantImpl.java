@@ -13,10 +13,10 @@ import com.tomato.models.RestaurantModel;
 public class RestaurantImpl implements RestaurantDAO{
 	
 	String INSERT="INSERT into `restaurant` (`name`,`address`,`phone`,"
-			+ "`rating`,`cusineType`,`isActive`,`eta`,`imagepath`,`restaurantUniqueidentifier`) values (?,?,?,?,?,?,?,?,?)";
+			+ "`rating`,`cusineType`,`isActive`,`eta`,`imagepath`,`restaurantUniqueidentifier`,`menuType`) values (?,?,?,?,?,?,?,?,?,?)";
 	
 	String UPDATE="update `restaurant` set `name`=?,`Address`=?,`phone`=?,`rating`=?,`cusinetype`=?,"
-			+ "`isactive`=?,`eta`=?,`imagepath`=? where `restaurantUniqueidentifier`=?";
+			+ "`isactive`=?,`eta`=?,`imagepath`=?,`menuType`=? where `restaurantUniqueidentifier`=?";
 	
 	String DELETE="delete from `restaurant` where `restaurantid`=?";
 	
@@ -37,6 +37,7 @@ public class RestaurantImpl implements RestaurantDAO{
 			pstmt.setString(7, Restaurant.getEta());
 			pstmt.setString(8, Restaurant.getImagePath());
 			pstmt.setString(9, Restaurant.getRestaurantUniqueIdentifier());
+			pstmt.setString(10, Restaurant.getMenuType());
 			System.out.print(pstmt.executeUpdate()+" "+ Restaurant.getName()+" restaurant is inserted");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -72,6 +73,7 @@ public class RestaurantImpl implements RestaurantDAO{
 			pstmt.setString(7, Restaurant.getEta());
 			pstmt.setString(8, Restaurant.getImagePath());
 			pstmt.setString(9, Restaurant.getRestaurantUniqueIdentifier());
+			pstmt.setString(10, Restaurant.getMenuType());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 	
@@ -96,12 +98,13 @@ public class RestaurantImpl implements RestaurantDAO{
 				String phone=res.getString("phone");
 				int rating=res.getInt("rating");
 				String cusineType=res.getString("cusineType");
-				boolean isActive=res.getBoolean("isActve");
+				boolean isActive=res.getBoolean("isActive");
 				String eta=res.getString("eta");
 				int adminUserId=res.getInt("adminUserId");
 				String imagepPath=res.getString("imagePath");
 				String restaurantUniqueidentifier=res.getString("restaurantUniqueidentifier");
-				restaurant= new RestaurantModel(Id,name,address,phone,rating,cusineType,isActive,eta,adminUserId,imagepPath,restaurantUniqueidentifier);
+				String menuType=res.getString("menuType");
+				restaurant= new RestaurantModel(Id,name,address,phone,rating,cusineType,isActive,eta,adminUserId,imagepPath,restaurantUniqueidentifier,menuType);
 			}
 			return restaurant;
 		} catch (SQLException e) {
@@ -131,7 +134,8 @@ public class RestaurantImpl implements RestaurantDAO{
 				int adminUserId=res.getInt("adminUserId");
 				String imagepPath=res.getString("imagePath");
 				String restaurantUniqueidentifier=res.getString("restaurantUniqueidentifier");
-				restaurant= new RestaurantModel(Id,name,address,phone,rating,cusineType,isActive,eta,adminUserId,imagepPath,restaurantUniqueidentifier);
+				String menuType=res.getString("menuType");
+				restaurant= new RestaurantModel(Id,name,address,phone,rating,cusineType,isActive,eta,adminUserId,imagepPath,restaurantUniqueidentifier,menuType);
 				list.add(restaurant);
 				
 			}

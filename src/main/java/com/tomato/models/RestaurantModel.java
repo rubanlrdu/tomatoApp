@@ -13,6 +13,7 @@ public class RestaurantModel {
 	private int adminUserId;
 	private String imagePath;
 	private String restaurantUniqueIdentifier;
+	private String menuType;
 
 	public RestaurantModel() {
 	}
@@ -86,6 +87,48 @@ public class RestaurantModel {
 		this.adminUserId = adminUserId;
 		this.imagePath = imagePath;
 		this.restaurantUniqueIdentifier = restaurantUniqueIdentifier;
+	}
+
+	public RestaurantModel(int restaurantId, String name, String address, String phone, int rating, String cusineType,
+			boolean isActive, String eta, int adminUserId, String imagePath, String restaurantUniqueIdentifier,
+			String menuType) {
+		super();
+		this.restaurantId = restaurantId;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.rating = rating;
+		this.cusineType = cusineType;
+		this.isActive = isActive;
+		this.eta = eta;
+		this.adminUserId = adminUserId;
+		this.imagePath = imagePath;
+		this.restaurantUniqueIdentifier = restaurantUniqueIdentifier;
+		this.menuType = menuType;
+	}
+
+	public RestaurantModel(String name, String address, String phone, int rating, String cusineType, boolean isActive,
+			String eta, int adminUserId, String imagePath, String restaurantUniqueIdentifier, String menuType) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.rating = rating;
+		this.cusineType = cusineType;
+		this.isActive = isActive;
+		this.eta = eta;
+		this.adminUserId = adminUserId;
+		this.imagePath = imagePath;
+		this.restaurantUniqueIdentifier = restaurantUniqueIdentifier;
+		this.menuType = menuType;
+	}
+
+	public String getMenuType() {
+		return menuType;
+	}
+
+	public void setMenuType(String menuType) {
+		this.menuType = menuType;
 	}
 
 	public int getRestaurantId() {

@@ -6,10 +6,11 @@ import com.tomato.models.OrderItemModel;
 
 public interface OrderItemDAO {
 
-	void setOrderItem(OrderItemModel orderItem);
+	int setOrderItem(OrderItemModel orderItem);
 	OrderItemModel getOrderItem(OrderItemModel orderItem);
 	void updateOrderItem(OrderItemModel orderItem);
 	void deleteOrderItem(OrderItemModel orderItem);
 	List<OrderItemModel>getAllOrderItem();
+	List<OrderItemModel>getAllOrderItemByOrderId(int orderId);
 	
 }

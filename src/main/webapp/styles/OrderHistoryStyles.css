@@ -1,0 +1,142 @@
+/* === Google Fonts & Global Styles === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f5f7;
+    color: #333;
+}
+
+/* === Main Container === */
+.order-history-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+}
+
+/* === Order List === */
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between order cards */
+}
+
+/* === Order Card Styling === */
+.order-card {
+    display: block; /* Makes the whole area of the <a> tag a block */
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #ff6347; /* Accent color */
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Card Sections --- */
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.restaurant-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.total-price {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.order-card-body .order-detail {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.order-card-body .order-detail strong {
+    color: #333;
+}
+
+.order-card-footer {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+/* === Status Badge Styling === */
+.order-status {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Different colors for different statuses */
+.status-delivered {
+    background-color: #e8f5e9; /* Light green */
+    color: #2e7d32; /* Dark green */
+}
+
+.status-cancelled {
+    background-color: #ffebee; /* Light red */
+    color: #c62828; /* Dark red */
+}
+
+.status-out-for-delivery {
+    background-color: #e3f2fd; /* Light blue */
+    color: #1565c0; /* Dark blue */
+}
+
+.status-preparing,
+.status-placed {
+    background-color: #fff3e0; /* Light orange */
+    color: #e65100; /* Dark orange */
+}
+
+/* Message for when there are no orders */
+.no-orders-message {
+    text-align: center;
+    padding: 3rem;
+    background-color: #fff;
+    border-radius: 12px;
+    color: #7f8c8d;
+    font-size: 1.2rem;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+    .order-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}

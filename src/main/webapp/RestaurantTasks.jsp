@@ -6,8 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="styles/HeaderAndFooterStyles.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Restaurant Tasks</title>
 </head>
 <body>
 <div class="Restaurants" id="restaurantOption">

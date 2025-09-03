@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet{
 		{
 			HttpSession session= req.getSession();
 			session.setAttribute("userName", userTable.getUserName());
+			session.setAttribute("userId", userTable.getUserId());
 			resp.sendRedirect("Home");
 		}
 		else if(count>0)

@@ -25,15 +25,18 @@ public class CartServlet extends HttpServlet {
 
 		
 		int menuId=Integer.parseInt(request.getParameter("menuId"));
+		int restaurantId=Integer.parseInt(request.getParameter("restaurantId"));
 		HttpSession session=request.getSession();
-		Integer currentMenuId=(Integer) session.getAttribute("menuId");
+		Integer currentrestaurantId=(Integer) session.getAttribute("restaurantId");
 		Cart cart=(Cart) session.getAttribute("Cart");
 		
-		if(cart==null || menuId!=currentMenuId) {
+		
+		if(cart==null || restaurantId!=currentrestaurantId) {
 			
 			cart=new Cart();
 			session.setAttribute("Cart", cart);
 			session.setAttribute("menuId",menuId);
+			session.setAttribute("restaurantId", restaurantId);
 			
 		}
 		
@@ -44,12 +47,10 @@ public class CartServlet extends HttpServlet {
 		}
 		else if(action.equals("update")) {
 			
-			updateItem(request,cart);
-			
-
-			
+			updateItem(request,cart);	
 		}
 		else if(action.equals("delete")){
+			cart.removeAllItems();
 			
 		}
 		response.sendRedirect("CartPage.jsp");
@@ -62,7 +63,6 @@ public class CartServlet extends HttpServlet {
 		MenuModel menu=menuImpl.getMenu(menuId);
 		CartItemModel item=new CartItemModel(menu.getMenuId(),menu.getRestaurantId(),menu.getItemName(),menu.getPrice(),quantity);
 		cart.addItem(item);
-		System.out.println( cart.getAllItems());
 		
 	}
 	void updateItem(HttpServletRequest request, Cart cart) {

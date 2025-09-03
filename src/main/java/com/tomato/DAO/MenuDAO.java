@@ -12,4 +12,5 @@ public interface MenuDAO {
 	void deleteMenu(MenuModel menu);
 	List<MenuModel> getAllRestaurantMenu(int restaurantId);
 	List<MenuModel> getAllMenu();
+	List<MenuModel> getMenyByCategory(int restaurantId, String category);
 }

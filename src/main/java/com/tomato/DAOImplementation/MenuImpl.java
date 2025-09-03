@@ -12,9 +12,9 @@ import com.tomato.models.MenuModel;
 
 public class MenuImpl implements MenuDAO {
 	
-	String INSERT="insert into `menu` (`restaurantId`,`itemName`,`description`,`price`,`rating`,`isAvailable`,`imagePath`) values (?,?,?,?,?,?,?)";
+	String INSERT="insert into `menu` (`restaurantId`,`itemName`,`description`,`price`,`rating`,`isAvailable`,`imagePath`,`category`) values (?,?,?,?,?,?,?,?)";
 	
-	String UPDATE="update `menu` set `itemName`=?,`description`=?,`price`=?,`rating`=?,`isAvailable`=?,`imagePath`=? where `menuId`=?";
+	String UPDATE="update `menu` set `itemName`=?,`description`=?,`price`=?,`rating`=?,`isAvailable`=?,`imagePath`=?,`category`=? where `menuId`=?";
 	
 	String SELECT="select * from `menu` where `menuId`=?";
 	
@@ -23,6 +23,8 @@ public class MenuImpl implements MenuDAO {
 	String SELECTALLRESTAURANTMENU="select * from `menu` where `restaurantId`=?";
 	
 	String DELETE="delete from `menu` where `menuid`=?";
+	String SELECTMENUBYCATEGORY="select * from `menu` where `restaurantId`=? and `category`=?";
+	
 	public MenuImpl() {
 	}
 
@@ -38,6 +40,7 @@ public class MenuImpl implements MenuDAO {
 			pstmt.setInt(5, menu.getRating());
 			pstmt.setBoolean(6, menu.isAvailable());
 			pstmt.setString(7, menu.getImagePath());
+			pstmt.setString(8, menu.getCategory());
 			
 			pstmt.executeUpdate();
 
@@ -64,7 +67,8 @@ public class MenuImpl implements MenuDAO {
 				int rating=res.getInt("rating");
 				Boolean isAvailable=res.getBoolean("isAvailable");
 				String imagePath=res.getString("imagePath");
-				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath);
+				String category=res.getString("category");
+				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath,category);
 			}
 			return table;
 		} catch (SQLException e) {
@@ -86,6 +90,7 @@ public class MenuImpl implements MenuDAO {
 			pstmt.setBoolean(5,table.isAvailable());
 			pstmt.setString(6,table.getImagePath());
 			pstmt.setInt(7,table.getMenuId());
+			pstmt.setString(8,table.getCategory());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 	
@@ -126,7 +131,8 @@ public class MenuImpl implements MenuDAO {
 				int rating=res.getInt("rating");
 				Boolean isAvailable=res.getBoolean("isAvailable");
 				String imagePath=res.getString("imagePath");
-				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath);
+				String category=res.getString("category");
+				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath,category);
 				list.add(table);
 			}
 			return list;
@@ -156,7 +162,40 @@ public class MenuImpl implements MenuDAO {
 				int rating=res.getInt("rating");
 				Boolean isAvailable=res.getBoolean("isAvailable");
 				String imagePath=res.getString("imagePath");
-				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath);
+				String category=res.getString("category");
+				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath,category);
+				list.add(table);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<MenuModel> getMenyByCategory(int restaurantId, String category) {
+		List<MenuModel> list= new ArrayList<MenuModel>();
+		Connection con=DataBaseConnection.getConnection();
+		MenuModel table=new MenuModel();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(SELECTMENUBYCATEGORY);
+
+			pstmt.setInt(1, restaurantId);
+			pstmt.setString(2, category);
+			ResultSet res=pstmt.executeQuery();
+			
+			while(res.next()) {
+				int menuId=res.getInt("menuId");
+				restaurantId=res.getInt("restaurantId");
+				String itemName=res.getString("itemName");
+				String description=res.getString("description");
+				int price=res.getInt("price");
+				int rating=res.getInt("rating");
+				Boolean isAvailable=res.getBoolean("isAvailable");
+				String imagePath=res.getString("imagePath");
+				category=res.getString("category");
+				table=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath,category);
 				list.add(table);
 			}
 			return list;

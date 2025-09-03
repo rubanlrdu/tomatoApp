@@ -5,13 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration - TomatoApp</title>
     <!-- Link to your new CSS file -->
-    <link rel="stylesheet" href="RegisterStyles.css">
+    <link rel="stylesheet" href="styles/RegisterStyles.css">
+     <link rel="stylesheet" href="styles/HeaderAndFooterStyles.css">
     <!-- Optional: Link to Google Fonts for a modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<header>
+<div class="navBar">
+    <div class="navBarLogoContainer">
+    <form action="Home">
+    <button type="submit" class="navBarLogo">tomato</button></form> 
+    </div>
+    <div class="navBarButtons">
+        <%
+    String userName=(String)session.getAttribute("userName");
+    %>
+    <%
+    if(userName==null){
+    %>
+        <div class="loginButtonContainer"><a class="loginButton" href="LoginPage.jsp">login</a></div>
+        <div class="signupButtonContainer"><a class="signupButton" href="RegisterPage.jsp">signup</a></div>
+        <%} %>
+        <div class="cartButtonContainer"><a href="CartPage.jsp" class="cartButton"><i class="fa-solid fa-cart-shopping"></i> Cart</a></div>
+    <% 
+    if (userName!=null)
+    {
+    	%>
+    	<div class="dropdown-container">
+        <button class="userNameToggle" id="navBarButtons">Hello,<br><%=userName %></button>
+        <div class="profileMenu">
+             <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons">Orders</a>
+        </div>
+        </div>
+        
+    <%
+    }%>
+    </div>
+</div>
+</header>
 
     <div class="register-container">
         <h1>Create an Account</h1>

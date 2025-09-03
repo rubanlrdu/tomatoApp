@@ -6,14 +6,14 @@ public class OrderItemModel {
 	int orderId;
 	int menuId;
 	int quantity;
-	int totalPrice;
+	float totalPrice;
 	
 	public OrderItemModel()
 	{
 		
 	}
 	
-	public OrderItemModel(int orderItemId, int orderId, int menuId, int quantity, int totalPrice) {
+	public OrderItemModel(int orderItemId, int orderId, int menuId, int quantity, float totalPrice) {
 		super();
 		this.orderItemId = orderItemId;
 		this.orderId = orderId;
@@ -46,10 +46,10 @@ public class OrderItemModel {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getTotalPrice() {
+	public float getTotalPrice() {
 		return totalPrice;
 	}
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 

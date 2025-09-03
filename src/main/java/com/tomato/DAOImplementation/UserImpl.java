@@ -89,6 +89,7 @@ public class UserImpl implements UserDAO{
 			ResultSet res=pstmt.executeQuery();
 			
 			if(res.next()) {
+				int id=res.getInt("userid");
 				String name=res.getString("name");
 				String password=res.getString("password");
 				String username=res.getString("username");
@@ -98,7 +99,7 @@ public class UserImpl implements UserDAO{
 				String role=res.getString("role");
 				Timestamp createdDate=res.getTimestamp("createdDate");
 				Timestamp lastLoginDate=res.getTimestamp("lastLoginDate");
-				user= new UserModel(name, username,password, email,phone, address,role, createdDate, lastLoginDate);
+				user= new UserModel(id,name, username,password, email,phone, address,role, createdDate, lastLoginDate);
 			}
 			return user;
 		} catch (SQLException e) {
@@ -117,6 +118,7 @@ public class UserImpl implements UserDAO{
 			ResultSet res=pstmt.executeQuery();
 	
 			while(res.next()) {
+				int id=res.getInt("userid");
 				String fullname=res.getString("name");
 				String password=res.getString("password");
 				String username=res.getString("username");
@@ -126,7 +128,7 @@ public class UserImpl implements UserDAO{
 				String role=res.getString("role");
 				Timestamp createdDate=res.getTimestamp("createdDate");
 				Timestamp lastLoginDate=res.getTimestamp("lastLoginDate");
-				user= new UserModel(fullname, username ,password, email, phone, address,role, createdDate, lastLoginDate);
+				user= new UserModel(id,fullname, username ,password, email, phone, address,role, createdDate, lastLoginDate);
 				list.add(user);
 				
 			}

@@ -1,0 +1,168 @@
+/* === Google Fonts (Optional, but recommended for a modern look) === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* === Global Styles & Reset === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+
+/* === Main Content Area === */
+.mainContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* === Restaurant Header Info === */
+.sectionTitle {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.mainContainer > h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #6c757d;
+    margin-bottom: 3rem;
+}
+
+/* === Category Title Styling === */
+.categoryContainer {
+margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #ff6347;
+    cursor: pointer; /* This is the most important part! */
+    display: flex; /* Use flexbox for easy alignment */
+    align-items: center; /* Vertically align the title and arrow */
+    transition: background-color 0.2s ease;/* Accent border */
+    border-radius:12px;
+}
+.categoryContainer:hover {
+    background-color: #f0f0f0; /* Slight hover effect */
+}
+.categoryContainer h1 {
+    font-size: 2rem;
+    font-weight: 600;/* Makes border fit the text */
+}
+.categoryContainer h1::before {
+    content: '▶'; /* Right-pointing arrow by default (collapsed) */
+    font-size: 1.2rem;
+    margin-right: 15px;
+    color: #ff6347;
+    display: inline-block;
+    transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+/* 4. Rotate the arrow when the category is active (expanded) */
+.categoryContainer.active h1::before {
+    transform: rotate(90deg);
+}
+
+/* === Menu Grid Layout === */
+.menuGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.menuGrid.active{
+	display:none;
+}
+/* === Menu Item Card Styling === */
+.menu-item-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Important for the image's corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Stacks image, info, and button vertically */
+}
+
+.menu-item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Make the link fill the card */
+}
+
+.menu-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Prevents image stretching */
+}
+
+.menuInfo {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* This is key! It pushes the button to the bottom */
+}
+
+.itemName {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.itemDescription {
+    font-size: 0.9rem;
+    color: #6c757d;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Pushes content below it to the bottom */
+}
+
+.menuMetaData {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.rating .fa-star {
+    color: #ffc107; /* Gold color for the star */
+}
+
+/* === Add to Cart Button Styling === */
+.addToCartButton {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ff6347;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #ff6347;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Aligns button to the bottom if content is short */
+}
+
+.addToCartButton:hover {
+    background-color: #ff6347;
+    color: #fff;
+}
+
+/* === Footer === */

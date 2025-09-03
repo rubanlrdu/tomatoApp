@@ -1,0 +1,150 @@
+/* === Google Fonts & Global Styles === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f5f7;
+    color: #333;
+}
+
+/* === Main Checkout Container === */
+.checkout-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* === Form Sections === */
+.form-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+.form-section:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+/* === Form Groups and Fields === */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff6347;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 99, 71, 0.15);
+}
+
+/* === Grid Layout for side-by-side fields === */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* === Button Styles === */
+.primary-button, .secondary-button {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.primary-button {
+    background-color: #ff6347;
+    color: white;
+    margin-top: 2rem;
+}
+
+.primary-button:hover {
+    background-color: #e55a40;
+    transform: translateY(-3px);
+}
+
+.secondary-button {
+    background-color: #ecf0f1;
+    color: #34495e;
+    border: 1px solid #bdc3c7;
+    margin-top: 1.5rem;
+}
+
+.secondary-button:hover {
+    background-color: #e0e5e8;
+}
+
+/* === JavaScript Interaction === */
+.newAddressContainer {
+	display:block;
+  /* Hidden by default */
+}
+
+.newAddressContainer.active {
+	display:block;
+  /* Becomes visible when JS adds the 'active' class */
+}
+
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    .checkout-container {
+        padding: 1.5rem;
+    }
+    .form-grid {
+        grid-template-columns: 1fr; /* Stack elements on small screens */
+    }
+}

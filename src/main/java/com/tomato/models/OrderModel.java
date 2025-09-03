@@ -1,15 +1,18 @@
 package com.tomato.models;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class OrderModel {
 
 	int orderId;
 	int userId;
 	int restaurantId;
-	Date orderDate;
-	int totalAmount;
+	LocalDateTime orderDate;
+	float totalAmount;
 	String status;
+	String address;
 	String paymentMode;
 	
 	public OrderModel() {
@@ -17,8 +20,9 @@ public class OrderModel {
 	}
 	
 	
-	public OrderModel(int orderId, int userId, int restaurantId, Date orderDate, int totalAmount, String status,
-			String paymentMode) {
+	
+	public OrderModel(int orderId, int userId, int restaurantId, LocalDateTime orderDate, float totalAmount,
+			String status, String address, String paymentMode) {
 		super();
 		this.orderId = orderId;
 		this.userId = userId;
@@ -26,10 +30,21 @@ public class OrderModel {
 		this.orderDate = orderDate;
 		this.totalAmount = totalAmount;
 		this.status = status;
+		this.address = address;
 		this.paymentMode = paymentMode;
 	}
-	
-	
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
 	public int getOrderId() {
 		return orderId;
 	}
@@ -48,16 +63,16 @@ public class OrderModel {
 	public void setRestaurantId(int restaurantId) {
 		this.restaurantId = restaurantId;
 	}
-	public Date getOrderDate() {
+	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
+	public void setOrderDate(LocalDateTime l) {
+		this.orderDate = l;
 	}
-	public int getTotalAmount() {
+	public float getTotalAmount() {
 		return totalAmount;
 	}
-	public void setTotalAmount(int totalAmount) {
+	public void setTotalAmount(float totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 	public String getStatus() {

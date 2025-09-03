@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +15,13 @@ import com.tomato.models.OrderModel;
 
 public class OrderImpl implements OrderDAO{
 	
-	String INSERT="insert into `order` (`userId`,`restaurantId`,`orderDate`,`totalAmount`,`status`,`paymentMode`) values (?,?,?,?,?,?)";
+	String INSERT="insert into `order` (`userId`,`restuarantId`,`orderDate`,`totalAmount`,`status`,`paymentMode`,`address`) values (?,?,?,?,?,?,?)";
 	
 	String UPDATE="update `order` set `orderDate`=?,`totalAmount`=?,`status`=?, `paymentMode`=? where `orderId`=?";
 	
 	String SELECT="select * from `order` where `orderid`=?";
+	
+	String SELECTBYUSER="select * from `order` where `userid`=?";
 	
 	String SELECTALL="select * from `order`";
 	
@@ -27,22 +31,31 @@ public class OrderImpl implements OrderDAO{
 	}
 
 	@Override
-	public void setOrder(OrderModel order) {
+	public int setOrder(OrderModel order) {
 		Connection con = DataBaseConnection.getConnection();
+		int orderId=0;
 		try {
-			PreparedStatement pstmt =con.prepareStatement(INSERT);
+			PreparedStatement pstmt =con.prepareStatement(INSERT,Statement.RETURN_GENERATED_KEYS);
 			pstmt.setInt(1, order.getUserId());
 			pstmt.setInt(2, order.getRestaurantId());
-			pstmt.setDate(3, order.getOrderDate());
-			pstmt.setInt(4, order.getTotalAmount());
+			pstmt.setObject(3, order.getOrderDate());
+			pstmt.setFloat(4, order.getTotalAmount());
 			pstmt.setString(5, order.getStatus());
 			pstmt.setString(6, order.getPaymentMode());
+			pstmt.setString(7, order.getAddress());
 			
 			pstmt.executeUpdate();
-
+			
+			ResultSet ids=pstmt.getGeneratedKeys();
+			while(ids.next())
+			{
+				orderId=ids.getInt(1);
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return orderId;
 		
 	}
 
@@ -58,12 +71,13 @@ public class OrderImpl implements OrderDAO{
 			if(res.next()) {
 				int orderId=res.getInt("orderId");
 				int userId=res.getInt("userId");
-				int restaurantId=res.getInt("restaurantId");
-				Date orderDate=res.getDate("orderDate");
+				int restaurantId=res.getInt("restuarantId");
+				LocalDateTime orderDate=(LocalDateTime) res.getObject("orderDate");
 				int totalAmount=res.getInt("totalAmount");
 				String status=res.getString("status");
 				String paymentMode=res.getString("paymentMode");
-				table=new OrderModel(orderId,userId,restaurantId,orderDate,totalAmount,status,paymentMode);
+				String address=res.getString("address");
+				table=new OrderModel(orderId,userId,restaurantId,orderDate,totalAmount,status,paymentMode,address);
 			}
 			return table;
 		} catch (SQLException e) {
@@ -71,15 +85,42 @@ public class OrderImpl implements OrderDAO{
 		}
 		return table;
 	}
-
+	@Override
+	public List<OrderModel> getOrderByUser(OrderModel order) {
+		Connection con=DataBaseConnection.getConnection();
+		OrderModel table=new OrderModel();
+		List<OrderModel> list= new ArrayList<OrderModel>();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(SELECTBYUSER);
+			pstmt.setInt(1, order.getUserId());
+			ResultSet res=pstmt.executeQuery();
+			
+			while(res.next()) {
+				int orderId=res.getInt("orderId");
+				int userId=res.getInt("userId");
+				int restaurantId=res.getInt("restuarantId");
+				LocalDateTime orderDate=(LocalDateTime) res.getObject("orderDate");
+				int totalAmount=res.getInt("totalAmount");
+				String status=res.getString("status");
+				String paymentMode=res.getString("paymentMode");
+				String address=res.getString("address");
+				table=new OrderModel(orderId,userId,restaurantId,orderDate,totalAmount,status,paymentMode,address);
+				list.add(table);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	@Override
 	public void updateOrder(OrderModel table) {
 		Connection con=DataBaseConnection.getConnection();
 		try {
 			PreparedStatement pstmt =con.prepareStatement(UPDATE);
 			
-			pstmt.setDate(1,table.getOrderDate());
-			pstmt.setInt(2,table.getTotalAmount());
+			pstmt.setObject(1,table.getOrderDate());
+			pstmt.setFloat(2,table.getTotalAmount());
 			pstmt.setString(3,table.getStatus());
 			pstmt.setString(4,table.getPaymentMode());
 			pstmt.setInt(5,table.getOrderId());
@@ -117,11 +158,12 @@ public class OrderImpl implements OrderDAO{
 				int orderId=res.getInt("orderId");
 				int userId=res.getInt("userId");
 				int restaurantId=res.getInt("restaurantId");
-				Date orderDate=res.getDate("orderDate");
-				int totalAmount=res.getInt("totalAmount");
+				LocalDateTime orderDate=(LocalDateTime) res.getObject("orderDate");
+				Float totalAmount=res.getFloat("totalAmount");
 				String status=res.getString("status");
 				String paymentMode=res.getString("paymentMode");
-				table=new OrderModel(orderId,userId,restaurantId,orderDate,totalAmount,status,paymentMode);
+				String address=res.getString("address");
+				table=new OrderModel(orderId,userId,restaurantId,orderDate,totalAmount,status,paymentMode,address);
 				list.add(table);
 			}
 			return list;

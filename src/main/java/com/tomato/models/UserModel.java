@@ -17,6 +17,21 @@ public class UserModel {
 		public UserModel() {
 		}
 		
+		public UserModel(int userId, String name, String userName, String password, String email, String phone,
+				String address, String role, Timestamp createdDate, Timestamp lastLoginDate) {
+			super();
+			this.userId = userId;
+			this.name = name;
+			this.userName = userName;
+			this.password = password;
+			this.email = email;
+			this.phone = phone;
+			this.address = address;
+			this.role = role;
+			this.createdDate = createdDate;
+			this.lastLoginDate = lastLoginDate;
+		}
+
 		public UserModel(String name, String userName, String password, String email, String phone,
 				String address, String role, Timestamp createdDate, Timestamp lastLoginDate) {
 			super();

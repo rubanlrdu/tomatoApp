@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import= "java.util.List,com.tomato.models.*,
-     com.tomato.DAOImplementation.*,com.tomato.DAO.*"  %>
+    
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="styles/HeaderAndFooterStyles.css">
+        <link rel="stylesheet" href="styles/OrderCompletePageStyles.css">
 <meta charset="UTF-8">
-<title>Admin Dashboard</title>
-<link rel="stylesheet" type="text/css" href="styles/AdminPage.css">
+<title>Order Placed</title>
 </head>
 <body>
 <header>
 <div class="navBar">
     <div class="navBarLogoContainer">
-        <h1 class="navBarLogo">tomato</h1>
+    <form action="Home">
+    <button type="submit" class="navBarLogo">tomato</button></form> 
     </div>
     <div class="navBarButtons">
         <%
@@ -43,18 +43,37 @@
     </div>
 </div>
 </header>
-<div class="adminDashBoard">
-    <h1>Admin Dashboard</h1>
-    <div class="globalOption">
-    <form action="AdminServlet">
-    <input type="hidden" name="option" value="restaurant">
-    <button type="submit"> Restaurants </button>
-    </form>
-    <form action="AdminServlet">
-    <input type="hidden" name="option" value="menu">
-    <button type="submit">Menu</button>
-    </form>
+<div class="confirmation-container-super">
+<div class="confirmation-container">
+    
+    <div class="confirmation-icon">
+        <!-- A simple checkmark icon made with CSS -->
+        <div class="checkmark"></div>
     </div>
+
+    <h1 class="confirmation-title">Thanks for Placing Your Order!</h1>
+    <p class="confirmation-subtitle">Your order is being prepared. You can track its progress or continue shopping.</p>
+    
+    <%
+    int orderId = (Integer)(request.getAttribute("orderId"));
+    %>
+    
+    <!-- Wrapper for the action buttons -->
+    <div class="action-buttons-container">
+    
+        <!-- "Continue Shopping" button (styled link) -->
+        <form action="Home">
+        <button class="btn btn-secondary" type="submit" value="" >Continue Shopping</button>
+        </form>
+    
+        <!-- "Track Order" button (form submit) -->
+        <form action="TrackOrderServlet" class="track-order-form">
+            <input type="hidden" name="orderId" value="<%=orderId%>">
+            <button type="submit" class="btn btn-primary">Track Order</button>
+        </form>
+        
+    </div>
+</div>
 </div>
 <footer>
 	<div class="companyContainer">

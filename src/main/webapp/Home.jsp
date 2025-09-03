@@ -5,7 +5,8 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="HomeStyles.css">
+<link rel="stylesheet" href="styles/HomeStyles.css">
+    <link rel="stylesheet" href="styles/HeaderAndFooterStyles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <meta charset="UTF-8">
 <title>tomatoApp</title>
@@ -14,12 +15,11 @@
 <header>
 <div class="navBar">
     <div class="navBarLogoContainer">
-        <h1 class="navBarLogo">tomato</h1>
+    <form action="Home">
+    <button type="submit" class="navBarLogo">tomato</button></form> 
     </div>
     <%
     String userName=(String)request.getAttribute("userName");
-    
-    
     %>
     <div class="navBarButtons">
     
@@ -29,13 +29,17 @@
         <div class="loginButtonContainer"><a class="loginButton" href="LoginPage.jsp">login</a></div>
         <div class="signupButtonContainer"><a class="signupButton" href="RegisterPage.jsp">signup</a></div>
         <%} %>
-        <div class="cartButtonContainer"><a href="CartPage.jsp" class="cartButton">cart</a></div>
+        <div class="cartButtonContainer"><a href="CartPage.jsp" class="cartButton"><i class="fa-solid fa-cart-shopping"></i> Cart</a></div>
     <% 
     if (userName!=null)
     {
     	%>
-    
-        <div class="cartButtonContainer"><h1 class="cartButton"><%=userName %></h1></div>
+    	<div class="dropdown-container">
+        <button class="userNameToggle" id="navBarButtons">Hello,<br><%=userName %></button>
+        <div class="profileMenu">
+             <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons">Orders</a>
+        </div>
+        </div>
         
     <%
     }%>
