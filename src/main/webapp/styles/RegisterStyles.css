@@ -6,13 +6,16 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    display: flex;
+    font-family: 'Poppins', sans-serif; /* Add padding for long forms on small screens */
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff9a8b 0%, #ff6a88 50%, #ff99ac 100%)
+}
+.mainContainer{
+	padding:2rem;
+	    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px; /* Add padding for long forms on small screens */
-    min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	
 }
 
 /* === Registration Card Container === */

@@ -12,7 +12,8 @@
 <header>
 <div class="navBar">
     <div class="navBarLogoContainer">
-        <h1 class="navBarLogo">tomato</h1>
+    <form action="Home">
+    <button type="submit" class="navBarLogo">tomato</button></form> 
     </div>
     <div class="navBarButtons">
         <%

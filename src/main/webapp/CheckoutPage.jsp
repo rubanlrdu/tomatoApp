@@ -20,12 +20,7 @@ java.util.List" %>
         <%
     String userName=(String)session.getAttribute("userName");
     %>
-    <%
-    if(userName==null){
-    %>
-        <div class="loginButtonContainer"><a class="loginButton" href="LoginPage.jsp">login</a></div>
-        <div class="signupButtonContainer"><a class="signupButton" href="RegisterPage.jsp">signup</a></div>
-        <%} %>
+
         <div class="cartButtonContainer"><a href="CartPage.jsp" class="cartButton"><i class="fa-solid fa-cart-shopping"></i> Cart</a></div>
     <% 
     if (userName!=null)
@@ -50,7 +45,15 @@ java.util.List" %>
         <div class="form-section">
             <h1 class="section-title">Select a Address</h1>
             <%
-            int userId = (Integer)session.getAttribute("userId");
+            	int userId=0;
+        		if(session.getAttribute("userId")!=null)
+        		{
+        		userId = (Integer)session.getAttribute("userId");
+        		}
+        		else{
+        			RequestDispatcher rd=request.getRequestDispatcher("LoginPage.jsp");
+        			rd.forward(request,response);
+        		}
             AddressDAO addressImpl = new AddressImpl();
             List<AddressModel> list = addressImpl.getAllAddressByUser(userId);
             %>

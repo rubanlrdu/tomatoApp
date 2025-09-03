@@ -46,7 +46,7 @@
     </div>
 </div>
 </header>
-
+<div class="mainContainer">
     <div class="login-container">
         <h1>Login</h1>
         <p class="subtitle">Welcome back! Please enter your details.</p>
@@ -89,6 +89,7 @@
             
         </form>
     </div>
+</div>
 <footer>
 	<div class="companyContainer">
 	    <h1>Company</h1>
