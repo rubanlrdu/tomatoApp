@@ -38,7 +38,7 @@ com.tomato.DAOImplementation.*, java.util.List" %>
              <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons">Orders</a>
         </div>
         </div>
-        
+            <div class="cartButtonContainer"><a href="LogoutServlet" class="cartButton">Logout</a></div>
     <%
     }%>
     </div>

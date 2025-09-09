@@ -26,7 +26,7 @@
     <%
     if(userName==null){
     %>
-        <div class="loginButtonContainer"><a class="loginButton" href="LoginPage.jsp">login</a></div>
+
         <div class="signupButtonContainer"><a class="signupButton" href="RegisterPage.jsp">signup</a></div>
         <%} %>
         <div class="cartButtonContainer"><a href="CartPage.jsp" class="cartButton"><i class="fa-solid fa-cart-shopping"></i> Cart</a></div>
@@ -72,10 +72,6 @@
                     <div class="radio-option">
                         <input type="radio" id="role-customer" name="role" value="customer" checked>
                         <label for="role-customer">Customer</label>
-                    </div>
-                    <div class="radio-option">
-                        <input type="radio" id="role-admin" name="role" value="admin">
-                        <label for="role-admin">Admin</label>
                     </div>
                     <div class="radio-option">
                         <input type="radio" id="role-restaurant" name="role" value="restaurant">

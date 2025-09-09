@@ -38,8 +38,10 @@
         <button class="userNameToggle" id="navBarButtons">Hello,<br><%=userName %></button>
         <div class="profileMenu">
              <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons">Orders</a>
+             <a href="AddressServlet?redirectTo=manageAddress" class="manageAddressButton" id="dropDownButtons">Manage Address</a>
         </div>
         </div>
+    <div class="cartButtonContainer"><a href="LogoutServlet" class="cartButton">Logout</a></div>
         
     <%
     }%>

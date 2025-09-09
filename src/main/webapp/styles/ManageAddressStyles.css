@@ -1,0 +1,148 @@
+/* === Google Fonts & Global Styles === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f5f7;
+    color: #333;
+
+}
+
+/* === Main Container === */
+.mainContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1/3 for form, 2/3 for list */
+    gap: 2rem;
+    align-items: flex-start;
+        padding: 2rem;
+}
+
+/* === Form Sections === */
+.form-section {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* === Form Groups and Fields === */
+.form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+.form-group label { margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
+.form-group textarea, .form-group select {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.form-group textarea { min-height: 80px; resize: vertical; }
+.form-group textarea:focus, .form-group select:focus {
+    outline: none;
+    border-color: #ff6347;
+    box-shadow: 0 0 0 4px rgba(255, 99, 71, 0.15);
+}
+
+/* === Grid Layout for side-by-side fields === */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* === Button Styling === */
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-primary { background-color: #ff6347; color: white; border-color: #ff6347; margin-top: 1rem; }
+.btn-primary:hover { background-color: #e55a40; }
+.btn-secondary { background-color: transparent; color: #3498db; border-color: #3498db; }
+.btn-secondary:hover { background-color: #3498db; color: white; }
+.btn-danger { background-color: transparent; color: #e74c3c; border-color: #e74c3c; }
+.btn-danger:hover { background-color: #e74c3c; color: white; }
+
+/* === Address Grid & Cards === */
+.addressGrid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout for address list */
+    gap: 1rem;
+}
+
+.address-card {
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid #3498db; /* Blue accent */
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For the type badge */
+}
+
+.address-card-type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #eaf2f8;
+    color: #3498db;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.address-details {
+    margin-bottom: 1rem;
+}
+.address-details p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+.address-details p strong {
+    color: #333;
+}
+
+.address-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto; /* Pushes buttons to the bottom */
+}
+.address-actions form {
+    flex-grow: 1; /* Makes forms share space equally */
+}
+
+/* === Responsive Design === */
+@media (max-width: 992px) {
+    .mainContainer {
+        grid-template-columns: 1fr; /* Stack form and list on smaller screens */
+    }
+}
+@media (max-width: 600px) {
+    body { padding: 1rem; }
+    .mainContainer { gap: 1.5rem; }
+    .form-grid { grid-template-columns: 1fr; }
+}

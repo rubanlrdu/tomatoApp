@@ -53,29 +53,105 @@ public class AddressImpl implements AddressDAO{
 	@Override
 	public void updateAddress(AddressModel address) {
 		Connection con = DataBaseConnection.getConnection();
-		// TODO Auto-generated method stub
+		try {
+			PreparedStatement pstmt =con.prepareStatement(UPDATE);
+			pstmt.setString(1, address.getAddressLine1());
+			pstmt.setString(2, address.getAddressLine2());
+			pstmt.setString(3, address.getLandmark());
+			pstmt.setString(4, address.getCity());
+			pstmt.setString(5, address.getState());
+			pstmt.setString(6, address.getPostalCode());
+			pstmt.setString(7, address.getAddressType());
+			pstmt.setBoolean(8, address.getIsDefault());
+			pstmt.setInt(9, address.getAddressID());
+			
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public void deleteAddress(int addressId) {
 		Connection con = DataBaseConnection.getConnection();
-		// TODO Auto-generated method stub
+		try {
+			PreparedStatement pstmt =con.prepareStatement(DELETE);
+
+			pstmt.setInt(1, addressId);
+			
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public AddressModel getAddress(int addressId) {
 		Connection con = DataBaseConnection.getConnection();
-		// TODO Auto-generated method stub
-		return null;
+		AddressModel table=new AddressModel();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(SELECT);
+
+			pstmt.setInt(1, addressId);
+			ResultSet res=pstmt.executeQuery();
+			
+			if(res.next())
+			{
+				addressId=res.getInt("addressId");
+				int userId=res.getInt("userId");
+				String addressLine1=res.getString("addressLine1");
+				String addressLine2=res.getString("addressLine2");
+				String landmark=res.getString("landmark");
+				String city=res.getString("city");
+				String state=res.getString("state");
+				String postalCode=res.getString("postalCode");
+				String addressType=res.getString("addressType");
+				Boolean isDefaultAddress=res.getBoolean("isDefault");
+				table=new AddressModel(addressId,userId,addressLine1,addressLine2,landmark,city,state,postalCode,addressType,isDefaultAddress);
+				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return table;
 	}
+	
 
 	@Override
 	public List<AddressModel> getAllAddress() {
 		Connection con = DataBaseConnection.getConnection();
-		// TODO Auto-generated method stub
-		return null;
+		List<AddressModel> list= new ArrayList<AddressModel>();
+		AddressModel table=new AddressModel();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(SELECTALL);
+
+
+			ResultSet res=pstmt.executeQuery();
+			
+			while(res.next()) {
+				int addressId=res.getInt("addressId");
+				int userId=res.getInt("userId");
+				String addressLine1=res.getString("addressLine1");
+				String addressLine2=res.getString("addressLine2");
+				String landmark=res.getString("landmark");
+				String city=res.getString("city");
+				String state=res.getString("state");
+				String postalCode=res.getString("postalCode");
+				String addressType=res.getString("addressType");
+				Boolean isDefaultAddress=res.getBoolean("isDefault");
+				table=new AddressModel(addressId,userId,addressLine1,addressLine2,landmark,city,state,postalCode,addressType,isDefaultAddress);
+				list.add(table);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	@Override
@@ -93,7 +169,7 @@ public class AddressImpl implements AddressDAO{
 				int addressId=res.getInt("addressId");
 				userId=res.getInt("userId");
 				String addressLine1=res.getString("addressLine1");
-				String addressLine2=res.getString("addressLine1");
+				String addressLine2=res.getString("addressLine2");
 				String landmark=res.getString("landmark");
 				String city=res.getString("city");
 				String state=res.getString("state");

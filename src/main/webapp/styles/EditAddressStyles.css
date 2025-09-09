@@ -1,0 +1,133 @@
+/* === Google Fonts & Global Styles === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+.mainContainer {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f5f7;
+    color: #333;
+
+}
+
+/* === Main Page Layout === */
+.edit-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Left column is smaller, right is larger */
+    gap: 2rem;
+    padding:2rem;
+    align-items: flex-start; /* Aligns items to the top of their grid cells */
+}
+
+/* === Card Styling (for both left and right cards) === */
+.current-address-card,
+.edit-form-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* === Current Address Display (Left Card) === */
+.address-details p {
+    margin: 0.75rem 0;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.address-details .label {
+    font-weight: 600;
+    color: #333;
+    margin-right: 8px;
+}
+
+/* === Edit Form Styling (Right Card) === */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff6347;
+    box-shadow: 0 0 0 4px rgba(255, 99, 71, 0.15);
+}
+
+/* === Grid Layout for side-by-side fields === */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+/* === Button Styling === */
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #ff6347;
+    color: white;
+    border-color: #ff6347;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #e55a40;
+    transform: translateY(-2px);
+}
+
+/* === Responsive Design === */
+@media (max-width: 992px) {
+    .edit-page-container {
+        grid-template-columns: 1fr; /* Stack the cards vertically */
+    }
+}
+@media (max-width: 600px) {
+    body { padding: 1rem; }
+    .edit-page-container { gap: 1.5rem; }
+    .form-grid { grid-template-columns: 1fr; }
+}

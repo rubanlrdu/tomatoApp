@@ -12,9 +12,10 @@ public class TestClass {
 
 	public static void main(String[] args) {
 		
-	    int x=10;
-	    System.out.print(x++);
-	    System.out.print(x);
+		AddressDAO addressImpl=new AddressImpl();
+	  	int addressId=1;
+	 	AddressModel address=addressImpl.getAddress(addressId);
+	 	System.out.print(address);
 	}
 
 }
