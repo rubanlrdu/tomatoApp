@@ -58,7 +58,7 @@ String action=request.getParameter("menuAction");
 		}
 	}
 	
-	void createMenu(HttpServletRequest request, HttpServletResponse response)
+	void createMenu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		int restaurantId=Integer.parseInt(request.getParameter("restaurantId"));
 		String itemName=request.getParameter("itemName");
@@ -67,23 +67,83 @@ String action=request.getParameter("menuAction");
 		int rating=Integer.parseInt(request.getParameter("rating"));
 		Boolean isAvailable=Boolean.valueOf(request.getParameter("isAvailable"));
 		String imagePath=request.getParameter("imagePath");
-		menuTable=new MenuModel(restaurantId,itemName,description,price,rating,isAvailable,imagePath);
+		String category=request.getParameter("category");
+		menuTable=new MenuModel(restaurantId,itemName,description,price,rating,isAvailable,imagePath,category);
 		menuImplementation.setMenu(menuTable);
 		System.out.print("Menu Created Maybe");
+		if(request.getParameter("redirectTo").equalsIgnoreCase("manageMenu"))
+		{
+			RequestDispatcher rd=request.getRequestDispatcher("ManageMenu.jsp");
+			rd.forward(request, response);
+		}
 		
 	}
-	void updateMenu(HttpServletRequest request, HttpServletResponse response)
+	void updateMenu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		MenuDAO menuImpl=new MenuImpl();
 		int restaurantId=Integer.parseInt(request.getParameter("restaurantId"));
 		int menuId=Integer.parseInt(request.getParameter("menuId"));
-		String itemName=request.getParameter("itemName");
-		String description=request.getParameter("description");
-		int price=Integer.parseInt(request.getParameter("price"));
-		int rating=Integer.parseInt(request.getParameter("rating"));
+		
+		MenuModel existingMenu=menuImpl.getMenu(menuId);
+		String itemName="";
+		String description="";
+		int price=0;
+		int rating=0;
+		String imagePath="";
+		String category="";
+		
+		if(!request.getParameter("itemName").isBlank()) {
+			itemName=request.getParameter("itemName");
+		}
+		else {
+			itemName=existingMenu.getItemName();
+		}
+		
+		if(!request.getParameter("description").isBlank()) {	
+			description=request.getParameter("description");
+		}
+		else {
+			description=existingMenu.getDescription();
+		}
+		
+		if(!request.getParameter("price").isBlank()) {
+			price=Integer.parseInt(request.getParameter("price"));
+			
+		}
+		else {
+			price=existingMenu.getPrice();
+		}
+		if(!request.getParameter("rating").isBlank()) {
+			rating=Integer.parseInt(request.getParameter("rating"));
+		}
+		else {
+			rating=existingMenu.getRating();
+		}
+		
 		Boolean isAvailable=Boolean.valueOf(request.getParameter("isAvailable"));
-		String imagePath=request.getParameter("imagePath");
-		menuTable=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath);
+		
+		if(!request.getParameter("imagePath").isBlank()) {
+			
+			imagePath=request.getParameter("imagePath");
+		}
+		else {
+			imagePath=existingMenu.getImagePath();
+		}
+		
+		if(!request.getParameter("category").isBlank()) {
+			category=request.getParameter("category");
+		}
+		
+		else {
+			category=existingMenu.getCategory();
+		}
+		menuTable=new MenuModel(menuId,restaurantId,itemName,description,price,rating,isAvailable,imagePath,category);
 		menuImplementation.updateMenu(menuTable);
+		if(request.getParameter("redirectTo").equalsIgnoreCase("editMenu"))
+		{
+			RequestDispatcher rd=request.getRequestDispatcher("EditMenu.jsp");
+			rd.forward(request, response);
+		}
 		
 	}
 	void deleteMenu(HttpServletRequest request, HttpServletResponse response)

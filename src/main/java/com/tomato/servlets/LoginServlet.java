@@ -38,7 +38,20 @@ public class LoginServlet extends HttpServlet{
 			HttpSession session= req.getSession();
 			session.setAttribute("userName", userTable.getUserName());
 			session.setAttribute("userId", userTable.getUserId());
+			req.setAttribute("userId", userTable.getUserId());
+			if(role.equalsIgnoreCase("customer"))
+			{
 			resp.sendRedirect("Home");
+			}
+			
+			else if(role.equalsIgnoreCase("admin"))
+			{
+				resp.sendRedirect("AdminPage.jsp");
+			}
+			else if(role.equalsIgnoreCase("restaurant"))
+			{
+				resp.sendRedirect("ManageRestaurantServlet");
+			}
 		}
 		else if(count>0)
 		{

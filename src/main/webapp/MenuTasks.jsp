@@ -69,13 +69,15 @@
         	<input type="text" name="price"><br>
         	<label for="rating">rating</label>
         	<input type="text" name="rating"><br>
-            <label>Availabilty</label>
+            <label>Availability</label>
         	<input type="radio" name="isAvailable" value="true">
         	<label for="isAvailable">Available</label>
         	<input type="radio" name="isAvailable" value="false">
             <label for="isAvailable">NotAvailable</label><br>
         	<label for="imagePath">ImagePath</label>
         	<input type="text" name="imagePath"><br>
+        	<label for="category">Category</label>
+        	<input type="text" name="category"><br>
         	<input type="hidden" name="menuAction" value="create">
         	<input type="submit" value="Submit">
     
@@ -142,6 +144,8 @@
             <label for="isAvailable">NotAvailable</label><br>
         	<label for="imagePath">ImagePath</label>
         	<input type="text" name="imagePath"><br>
+        	<label for="category">Category</label>
+        	<input type="text" name="category"><br>
         	<input type="hidden" name="menuAction" value="update">
         	<input type="submit" value="Submit">
         </form>

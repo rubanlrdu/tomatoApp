@@ -31,7 +31,7 @@ public class MenuModel {
 	
 	
 	public MenuModel(int restaurantId, String itemName, String description, int price, int rating, boolean isAvailable,
-			String imagePath) {
+			String imagePath,String category) {
 		super();
 		this.restaurantId = restaurantId;
 		this.itemName = itemName;
@@ -40,6 +40,7 @@ public class MenuModel {
 		this.rating = rating;
 		this.isAvailable = isAvailable;
 		this.imagePath = imagePath;
+		this.category = category;
 	}
 
 	public MenuModel(int menuId, int restaurantId, String itemName, String description, int price, int rating,

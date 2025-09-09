@@ -8,7 +8,7 @@ public interface MenuDAO {
 
 	void setMenu(MenuModel menu);
 	MenuModel getMenu(int menuId);
-	void updateMenu(MenuModel table);
+	int updateMenu(MenuModel table);
 	void deleteMenu(MenuModel menu);
 	List<MenuModel> getAllRestaurantMenu(int restaurantId);
 	List<MenuModel> getAllMenu();

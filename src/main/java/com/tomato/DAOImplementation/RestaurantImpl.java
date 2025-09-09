@@ -22,6 +22,8 @@ public class RestaurantImpl implements RestaurantDAO{
 	
 	String SELECT="select * from `restaurant` where `restaurantid`=?";
 	
+	String SELECTBYADMIN="select * from `restaurant` where `adminUserId`=?";
+	
 	String SELECTALL="select * from `restaurant`";
 	@Override
 	public void setRestaurant(RestaurantModel Restaurant) {
@@ -64,16 +66,34 @@ public class RestaurantImpl implements RestaurantDAO{
 		try {
 			PreparedStatement pstmt =con.prepareStatement(UPDATE);
 			
+
 			pstmt.setString(1,Restaurant.getName());
+			
+
 			pstmt.setString(2,Restaurant.getAddress());
+			
+
 			pstmt.setString(3,Restaurant.getPhone());
+			
+
 			pstmt.setInt(4, Restaurant.getRating());
+			
+
 			pstmt.setString(5, Restaurant.getCusineType());
+
 			pstmt.setBoolean(6, Restaurant.isActive());
+			
+
 			pstmt.setString(7, Restaurant.getEta());
+
 			pstmt.setString(8, Restaurant.getImagePath());
-			pstmt.setString(9, Restaurant.getRestaurantUniqueIdentifier());
-			pstmt.setString(10, Restaurant.getMenuType());
+			
+
+			pstmt.setString(9, Restaurant.getMenuType());
+			
+
+			pstmt.setString(10, Restaurant.getRestaurantUniqueIdentifier());
+			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 	
@@ -145,6 +165,37 @@ public class RestaurantImpl implements RestaurantDAO{
 		}
 		return list;
 
+	}
+
+	@Override
+	public RestaurantModel getRestaurantByAdmin(int adminId) {
+		Connection con=DataBaseConnection.getConnection();
+		RestaurantModel restaurant=new RestaurantModel();
+		try {
+			PreparedStatement pstmt = con.prepareStatement(SELECTBYADMIN);
+			pstmt.setInt(1, adminId);
+			ResultSet res=pstmt.executeQuery();
+			
+			if(res.next()) {
+				int Id=res.getInt("restaurantId");
+				String name=res.getString("name");
+				String address=res.getString("address");
+				String phone=res.getString("phone");
+				int rating=res.getInt("rating");
+				String cusineType=res.getString("cusineType");
+				boolean isActive=res.getBoolean("isActive");
+				String eta=res.getString("eta");
+				int adminUserId=res.getInt("adminUserId");
+				String imagepPath=res.getString("imagePath");
+				String restaurantUniqueidentifier=res.getString("restaurantUniqueidentifier");
+				String menuType=res.getString("menuType");
+				restaurant= new RestaurantModel(Id,name,address,phone,rating,cusineType,isActive,eta,adminUserId,imagepPath,restaurantUniqueidentifier,menuType);
+			}
+			return restaurant;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return restaurant;
 	}
 
 }

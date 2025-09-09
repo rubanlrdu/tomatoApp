@@ -20,7 +20,6 @@ java.util.List" %>
         <%
     String userName=(String)session.getAttribute("userName");
     %>
-
         <div class="cartButtonContainer"><a href="CartPage.jsp" class="cartButton"><i class="fa-solid fa-cart-shopping"></i> Cart</a></div>
     <% 
     if (userName!=null)

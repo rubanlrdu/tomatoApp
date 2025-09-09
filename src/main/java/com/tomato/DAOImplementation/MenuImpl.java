@@ -78,7 +78,7 @@ public class MenuImpl implements MenuDAO {
 	}
 
 	@Override
-	public void updateMenu(MenuModel table) {
+	public int updateMenu(MenuModel table) {
 		Connection con=DataBaseConnection.getConnection();
 		try {
 			PreparedStatement pstmt =con.prepareStatement(UPDATE);
@@ -89,13 +89,14 @@ public class MenuImpl implements MenuDAO {
 			pstmt.setInt(4,table.getRating());
 			pstmt.setBoolean(5,table.isAvailable());
 			pstmt.setString(6,table.getImagePath());
-			pstmt.setInt(7,table.getMenuId());
-			pstmt.setString(8,table.getCategory());
-			pstmt.executeUpdate();
+			pstmt.setString(7,table.getCategory());
+			pstmt.setInt(8,table.getMenuId());
+			return pstmt.executeUpdate();
 		} catch (SQLException e) {
 	
 			e.printStackTrace();
 		}
+		return 0;
 		
 	}
 

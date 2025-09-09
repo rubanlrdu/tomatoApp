@@ -122,6 +122,7 @@ public class RestaurantModel {
 		this.restaurantUniqueIdentifier = restaurantUniqueIdentifier;
 		this.menuType = menuType;
 	}
+	
 
 	public String getMenuType() {
 		return menuType;
