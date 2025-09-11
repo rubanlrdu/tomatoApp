@@ -164,5 +164,19 @@ margin-top: 2rem;
     background-color: #ff6347;
     color: #fff;
 }
+.notAvailableButton {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #c0c0c0;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #c0c0c0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: auto; /* Aligns button to the bottom if content is short */
+}
+
+
 
 /* === Footer === */

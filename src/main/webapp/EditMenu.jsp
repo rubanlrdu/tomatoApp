@@ -53,7 +53,6 @@ MenuModel menu=menuImpl.getMenu(menuId);
     <nav class="sub-nav">
         <a href="ManageRestaurant.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link">Restaurant Details</a>
         <a href="ManageMenu.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link active">Manage Menu</a>
-        <a href="ViewOrders.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link">View Orders</a>
     </nav>
 </header>
 
@@ -70,7 +69,14 @@ MenuModel menu=menuImpl.getMenu(menuId);
                 <div class="menuMetaData">
                     <span class="price"><%=menu.getPrice() %> Rupees</span>
                     <span class="rating"><i class="fas fa-star"></i> <%= menu.getRating() %></span>
+
                 </div>
+                    <%if(!menu.isAvailable()) {%>
+	                <button class="notAvailableButton">Item Not Available</button>
+	                <%} %>
+	                <%if(menu.isAvailable()) {%>
+	                <button class="availableButton">Item Available</button>
+	                <%} %>
             </div>           
         </div>
     </div>
@@ -80,7 +86,7 @@ MenuModel menu=menuImpl.getMenu(menuId);
         <h1 class="section-title">Edit Menu Item</h1>
         <form action="MenuDbServlet" method="post">
             <!-- Hidden fields -->
-            <input type="hidden" name="redirectTo" value="manageMenu">
+            <input type="hidden" name="redirectTo" value="editMenu">
             <input type="hidden" name="restaurantId" value="<%=menu.getRestaurantId()%>">
             <input type="hidden" name="menuId" value="<%=menuId%>">
             <input type="hidden" name="menuAction" value="update">
@@ -115,8 +121,8 @@ MenuModel menu=menuImpl.getMenu(menuId);
                 <div class="form-group">
                     <label for="isAvailable">Availability</label>
                     <select id="isAvailable" name="isAvailable">
-                        <option value="1" <%= menu.isAvailable() ? "selected" : "" %>>Available</option>
-                        <option value="0" <%= !menu.isAvailable() ? "selected" : "" %>>Not Available</option>
+                        <option value="true">Available</option>
+                        <option value="false">Not Available</option>
                     </select>
                 </div>
                 <div class="form-group">

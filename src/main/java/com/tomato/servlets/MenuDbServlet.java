@@ -146,10 +146,15 @@ String action=request.getParameter("menuAction");
 		}
 		
 	}
-	void deleteMenu(HttpServletRequest request, HttpServletResponse response)
+	void deleteMenu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		menuTable.setMenuId(Integer.parseInt(request.getParameter("menuId")));
 		menuImplementation.deleteMenu(menuTable);
+		if(request.getParameter("redirectTo").equalsIgnoreCase("manageMenu"))
+		{
+			RequestDispatcher rd=request.getRequestDispatcher("ManageMenu.jsp");
+			rd.forward(request, response);
+		}
 	}
 	
 

@@ -6,6 +6,7 @@
 <head>
     <link rel="stylesheet" href="styles/HeaderAndFooterStyles.css">
         <link rel="stylesheet" href="styles/OrderCompletePageStyles.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <meta charset="UTF-8">
 <title>Order Placed</title>
 </head>
@@ -34,10 +35,11 @@
     	<div class="dropdown-container">
         <button class="userNameToggle" id="navBarButtons">Hello,<br><%=userName %></button>
         <div class="profileMenu">
-             <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons">Orders</a>
+             <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons"><i class="fa-solid fa-box-archive"></i> Orders</a>
+             <a href="AddressServlet?redirectTo=manageAddress" class="manageAddressButton ordersButton" id="dropDownButtons"><i class="fa-solid fa-map-location-dot"></i> Manage Address</a>
+             <a href="LogoutServlet" class="logoutButton ordersButton" id="dropDownButtons"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>      
         </div>
         </div>
-            <div class="cartButtonContainer"><a href="LogoutServlet" class="cartButton">Logout</a></div>
     <%
     }%>
     </div>

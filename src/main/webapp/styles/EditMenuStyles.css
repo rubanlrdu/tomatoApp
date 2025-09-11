@@ -64,6 +64,31 @@ body {
 .itemDescription { font-size: 0.9rem; color: #6c757d; line-height: 1.5; margin-bottom: 1rem; }
 .menuMetaData { display: flex; justify-content: space-between; align-items: center; font-size: 1rem; font-weight: 500; }
 .rating .fa-star { color: #ffc107; }
+.notAvailableButton {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #c0c0c0;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #c0c0c0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 30px; /* Aligns button to the bottom if content is short */
+}
+.availableButton {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid  #ff6347;
+    border-radius: 8px;
+    background-color: #fff;
+    color:  #ff6347;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 30px; /* Aligns button to the bottom if content is short */
+}
 
 /* === Edit Form Styling (Right) === */
 .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }

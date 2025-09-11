@@ -7,6 +7,7 @@
     <title>Your Shopping Cart</title>
     <link rel="stylesheet" type="text/css" href="styles/CartPage.css">
     <link rel="stylesheet" type="text/css" href="styles/HeaderAndFooterStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <header>
@@ -33,10 +34,11 @@
     	<div class="dropdown-container">
         <button class="userNameToggle" id="navBarButtons">Hello,<br><%=userName %></button>
         <div class="profileMenu">
-             <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons">Orders</a>
+             <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons"><i class="fa-solid fa-box-archive"></i> Orders</a>
+             <a href="AddressServlet?redirectTo=manageAddress" class="manageAddressButton ordersButton" id="dropDownButtons"><i class="fa-solid fa-map-location-dot"></i> Manage Address</a>
+             <a href="LogoutServlet" class="logoutButton ordersButton" id="dropDownButtons"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </div>
         </div>
-            <div class="cartButtonContainer"><a href="LogoutServlet" class="cartButton">Logout</a></div>
     <%
     }%>
     </div>
@@ -92,7 +94,7 @@
                         </form>
                     </div>
 
-                    <p class="item-subtotal">$<%= String.format("%.2f", subtotal) %></p>
+                    <p class="item-subtotal"><i class="fa-solid fa-indian-rupee-sign"></i> <%= String.format("%.2f", subtotal) %></p>
                 </div>
             </div>
             <%
@@ -106,7 +108,7 @@
         <%-- Cart Summary Section --%>
         <div class="cart-summary">
             <div class="total-price">
-                <span>Total:</span> $<%= String.format("%.2f", totalPrice) %>
+                <span>Total:</span> <i class="fa-solid fa-indian-rupee-sign"></i> <%= String.format("%.2f", totalPrice) %>
             </div>
             <form action="CheckoutPage.jsp"> 
                 <button type="submit" class="checkout-btn">Proceed to Checkout</button>

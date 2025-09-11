@@ -49,7 +49,6 @@ RestaurantModel r=restaurantImpl.getRestaurant(restaurantId);
     <nav class="sub-nav">
         <a href="ManageRestaurant.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link active">Restaurant Details</a>
         <a href="ManageMenu.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link">Manage Menu</a>
-        <a href="ViewOrders.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link">View Orders</a>
     </nav>
 </header>
 

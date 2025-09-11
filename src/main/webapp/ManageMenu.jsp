@@ -58,7 +58,6 @@ RestaurantModel restaurant=restaurantImpl.getRestaurant((Integer.parseInt(reques
     <nav class="sub-nav">
         <a href="ManageRestaurant.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link">Restaurant Details</a>
         <a href="ManageMenu.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link active">Manage Menu</a>
-        <a href="ViewOrders.jsp?restaurantId=<%=restaurantId%>" class="sub-nav-link">View Orders</a>
     </nav>
 </header>
 
@@ -153,6 +152,13 @@ RestaurantModel restaurant=restaurantImpl.getRestaurant((Integer.parseInt(reques
                                     <input type="hidden" name="menuId" value="<%=menu.getMenuId()%>">
                                     <input type="hidden" name="restaurantId" value="<%=menu.getRestaurantId()%>">
                                     <button class="btn btn-secondary" type="submit">Edit Menu</button>
+                                </form>
+                                 <form action="MenuDbServlet" method="post">
+                                    <input type="hidden" name="menuId" value="<%=menu.getMenuId()%>">
+                                    <input type="hidden" name="restaurantId" value="<%=menu.getRestaurantId()%>">
+                                    <input type="hidden" name="menuAction" value="delete">
+                                    <input type="hidden" name="redirectTo" value="manageMenu">
+                                    <button class="btn btn-secondary" type="submit">Delete</button>
                                 </form>
                             </div>           
                         </div>

@@ -37,10 +37,11 @@ java.util.List, com.tomato.DAO.RestaurantDAO, com.tomato.DAOImplementation.Resta
     	<div class="dropdown-container">
         <button class="userNameToggle" id="navBarButtons">Hello,<br><%=userName %></button>
         <div class="profileMenu">
-             <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons">Orders</a>
+             <a href="OrderHistory.jsp"class="ordersButton" id="dropDownButtons"><i class="fa-solid fa-box-archive"></i> Orders</a>
+             <a href="AddressServlet?redirectTo=manageAddress" class="manageAddressButton ordersButton" id="dropDownButtons"><i class="fa-solid fa-map-location-dot"></i> Manage Address</a>
+             <a href="LogoutServlet" class="logoutButton ordersButton" id="dropDownButtons"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </div>
         </div>
-            <div class="cartButtonContainer"><a href="LogoutServlet" class="cartButton">Logout</a></div>
     <%
     }%>
     </div>
@@ -74,7 +75,7 @@ java.util.List, com.tomato.DAO.RestaurantDAO, com.tomato.DAOImplementation.Resta
                     
                     <div class="order-card-header">
                         <h2 class="restaurant-name"><%= restaurantImpl.getRestaurant(o.getRestaurantId()).getName() %></h2>
-                        <span class="total-price"><%=o.getTotalAmount() %> Rupees</span>
+                        <span class="total-price"><i class="fa-solid fa-indian-rupee-sign"></i> <%=o.getTotalAmount() %></span>
                     </div>
 
                     <div class="order-card-body">

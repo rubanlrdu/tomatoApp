@@ -7,6 +7,7 @@
     <!-- Link to the CSS file -->
     <link rel="stylesheet" href="styles/LoginStyles.css">
     <link rel="stylesheet" href="styles/HeaderAndFooterStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Optional: Link to Google Fonts for a modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

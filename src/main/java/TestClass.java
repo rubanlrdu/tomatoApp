@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.util.List;
 
 import com.tomato.DAO.AddressDAO;
@@ -12,10 +13,13 @@ public class TestClass {
 
 	public static void main(String[] args) {
 		
-		AddressDAO addressImpl=new AddressImpl();
-	  	int addressId=1;
-	 	AddressModel address=addressImpl.getAddress(addressId);
-	 	System.out.print(address);
+		float a=25;
+		float b=2;
+		float c=a/b;
+		System.out.print(c);
+		}
+	static int add(int a,int b)
+	{
+		return a+b;
 	}
-
 }
